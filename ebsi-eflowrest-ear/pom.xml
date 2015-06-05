@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>ebsi-eflowrest-ear</artifactId>
+  <packaging>ear</packaging>
+  
+  <parent>
+		<groupId>com.ebsi.eflow</groupId>
+		<artifactId>ebsi-eflowrest-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../ebsi-eflowrest-parent/pom.xml</relativePath>
+	</parent>
+  
+   <dependencies>
+		<dependency>
+			<groupId>com.ebsi.eflow</groupId>
+			<artifactId>ebsi-eflow-restapp</artifactId>
+			<version>${project.parent.version}</version>
+			<type>war</type>
+		</dependency>		
+   </dependencies>
+   
+  
+  <profiles>
+		<profile>
+			<id>build</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-ear-plugin</artifactId>
+						<version>${maven-ear-plugin}</version>
+						<configuration>
+							<packagingExcludes>*.jar</packagingExcludes>
+							<modules>								
+								<webModule>
+									<groupId>com.ebsi.eflow</groupId>
+									<artifactId>ebsi-eflow-restapp</artifactId>
+									<contextRoot>/eflowrest</contextRoot>
+								</webModule>
+							</modules>
+						</configuration>
+					</plugin>
+				</plugins>
+				<finalName>eflow-restapp</finalName>
+			</build>
+		</profile>
+	</profiles>
+</project>
