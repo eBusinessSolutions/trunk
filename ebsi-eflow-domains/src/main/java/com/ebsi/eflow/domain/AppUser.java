@@ -106,7 +106,7 @@ public class AppUser implements java.io.Serializable {
 		this.userPasswd = userPasswd;
 	}
 
-	@Column(name = "user_question1", nullable = false, length = 200)
+	@Column(name = "user_question1", nullable = false, length = 201)
 	public String getUserQuestion1() {
 		return this.userQuestion1;
 	}
